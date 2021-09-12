@@ -1,7 +1,7 @@
 from FuncUser import *
 
 Guest = ...
-cliente = ...
+cliente = False
 
 def NovaConta(): # Menu Criação da conta
     global Guest
@@ -11,16 +11,13 @@ def NovaConta(): # Menu Criação da conta
             Numero = str(input('Número: '))
             Saldo = float(input('Saldo: '))
             Limite = float(input('Limite: '))
-            try:
-                if cliente.Nome:
-                    Guest = Conta(Numero, cliente, Saldo, Limite)
-            except:
-                print('\033[31mVocê ainda não tem um conta cliente!. Crie uma para continuar (lOCALIZDA NO PAINEL!).')
-                sleep(3.5)
-        except:
+            if cliente.Nome:
+                Guest = Conta(Numero, cliente, Saldo, Limite)
+        except ValueError:
             print('\033[31mPrencha os dados corretamente!\033[35m')
-            sleep(2.5)
-        break
+            sleep(2.5) 
+        finally:
+            break
 
 def DepositarM(): # Menu Deposito
     global Guest

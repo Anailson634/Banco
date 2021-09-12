@@ -2,18 +2,15 @@ from time import sleep
 from time import localtime as Loc
 
 def Cabecario(text): #  Cabecario
-    print('\033[36m='*(len(text) + 2))
-    print('\033[35m'+text.center(len(text)+2))
-    print('\033[36m=\033[35m'*(len(text) + 2))
+    print('\033[36m='*40)
+    print('\033[35m'+text.center(40))
+    print('\033[36m=\033[35m'*40)
 
 def Menu(*args): #  Montar um menu 
     for c, v in enumerate(args):
         print(f'\033[36m{c}- {v}\033[35m')
 
 def NomeVerify(Text, tot=6):
-    """
-    Usado Somente para limitar X de caracteres
-    """
     while True:
         Nome = str(input(Text)).strip()
         if len(Nome) < tot:
