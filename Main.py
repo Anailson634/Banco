@@ -3,7 +3,6 @@ import os
 from FuncUser import *
 from FuncMenu import *
 from colorama import init
-
 init(convert=True)
 
 
@@ -13,6 +12,8 @@ NovaConta()
 
 while True:
     os.system('cls' if os.name == 'nt' else 'clear')
+    
+    SolicitarDB()
 
     Cabecario('Banco SSH')
     Menu('Depositar', 'Sacar', 'Ver dados', 'Transferencia', 'Finalizar e Salvar')
@@ -24,9 +25,6 @@ while True:
 
     elif User == 1:
         SacarM()
-
-    elif User == 2:
-        SolicitarDB()
 
     elif User == 3:
         Transfery()

@@ -38,17 +38,15 @@ def SacarM(): # Menu Sacando
         sleep(2.5)
 
 def SolicitarDB(): # Menu Solicitação de dados
-    Cabecario('Solisitação de dados')
+    Cabecario('Minhas informações')
     try:
         print(f'Número: {Guest.numero}')
         print(f'Nome: {cliente.Nome} {cliente.Sobrenome}')
         print(f'CPF: {cliente.cpf}')
-        print(f'Saldo: R${Guest.saldo:.2f}')
-        print(f'Limite: R${Guest.limite:.2f}')
-        sleep(6.4)
-    except:
+        print(f'Saldo: {ConRS(Guest.saldo)}')
+        print(f'Limite: {ConRS(Guest.limite)}')
+    except ValueError:
         print('\033[31mPelo visto sua conta ainda não foi criada!\033[35m')
-        sleep(2.5)
 
 def NovoClient(): # Menu Criando cliente
     global cliente
@@ -82,7 +80,7 @@ def Transfery(): # Transferir Dinhero par FULANO
                     print('\033[31mUm valor menor, por favor.\033[36m')
                 else:
                     Guest.saldo -= Transfy
-                    Guest.hstor['Tranzações'].append(f'Transferio R${ConRS(Transfy)} para {IdFu}')
+                    Guest.hstor['Tranzações'].append(f'Transferio {ConRS(Transfy)} para {IdFu}')
                     break
             except:
                 print('\033[31mVocê ainda não criou sua conta!')
@@ -96,9 +94,12 @@ def Save(): # Salvando informações do Usuario
     arq.write(f'Número: {Guest.numero}\n')
     arq.write(f'Nome: {Guest.cliente.Nome} {Guest.cliente.Sobrenome}\n')
     arq.write(f'CPF: {Guest.cliente.cpf}\n')
-    arq.write(f'Saldo: R${ConRS(Guest.saldo)}\n')
-    arq.write(f'Limite: R${ConRS(Guest.limite)}\n')
+    arq.write(f'Saldo: {ConRS(Guest.saldo)}\n')
+    arq.write(f'Limite: {ConRS(Guest.limite)}\n')
 
     arq.write('Tranzações:\n')
     for v in Guest.hstor['Tranzações']:
         arq.write(f'\t{v}\n')
+
+def Converter_CPF(cpf):
+    pass
