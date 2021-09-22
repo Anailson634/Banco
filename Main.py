@@ -6,14 +6,15 @@ from colorama import init
 init(convert=True)
 
 
+root=Ui_Menu()
 
-NovoClient()
-NovaConta()
+root.NovoClient()
+root.NovaConta()
 
 while True:
     os.system('cls' if os.name == 'nt' else 'clear')
     
-    SolicitarDB()
+    root.SolicitarDB()
 
     Cabecario('Banco SSH')
     Menu('Depositar', 'Sacar', 'Ver dados', 'Transferencia', 'Finalizar e Salvar')
@@ -21,20 +22,20 @@ while True:
     User=int(input(">> "))
 
     if User == 0:
-        DepositarM()
+        root.DepositarM()
 
     elif User == 1:
-        SacarM()
+        root.SacarM()
 
     elif User == 3:
-        Transfery()
+        root.Transfery()
 
     elif User == 4:
         print('Finalizando...')
         sleep(2)
         print('Pronto!')
         try:
-            Save()
+            root.Save()
         except:
             print('Finalizado sem registro!')
         break
