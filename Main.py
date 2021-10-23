@@ -18,8 +18,10 @@ while True:
 
     Cabecario('Banco SSH')
     Menu('Depositar', 'Sacar', 'Transferencia', 'Finalizar e Salvar')
-
-    User=int(input(">> "))
+    try:
+        User=int(input(">> "))
+    except ValueError:
+        continue
 
     if User == 0:
         root.DepositarM()
@@ -27,17 +29,17 @@ while True:
     elif User == 1:
         root.SacarM()
 
-    elif User == 3:
+    elif User == 2:
         root.Transfery()
 
-    elif User == 4:
+    elif User == 3:
         print('Finalizando...')
         sleep(2)
         print('Pronto!')
-        try:
-            root.Save()
-        except:
-            print('Finalizado sem registro!')
+        #try:
+        root.Save()
+        #except:
+        #    print('Finalizado sem registro!')
         break
     else:
         print('\033[31mOpção invalida!\033[m')

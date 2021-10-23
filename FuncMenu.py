@@ -88,15 +88,20 @@ class Ui_Menu:
                     break
 
     def Save(self): # Salvando informações do Usuario
+        import json
+        dados={
+            'Data': self.Guest.hstor["Data"],
+            'Número': self.Guest.numero,
+            'Nome': f'{self.Guest.cliente.Nome} {self.Guest.cliente.Sobrenome}',
+            'CPF': self.Guest.cliente.cpf,
+            'Saldo': ConRS(self.Guest.saldo),
+            'Limite': ConRS(self.Guest.limite),
+            'Tranzações': []
+        }
 
-        arq = open('Conta_Banco.txt', 'w')
-        arq.write(f'Data: {self.Guest.hstor["Data"]} \n----------------\n')
-        arq.write(f'Número: {self.Guest.numero}\n')
-        arq.write(f'Nome: {self.Guest.self.cliente.Nome} {self.Guest.self.cliente.Sobrenome}\n')
-        arq.write(f'CPF: {self.Guest.self.cliente.cpf}\n')
-        arq.write(f'Saldo: {ConRS(self.Guest.saldo)}\n')
-        arq.write(f'Limite: {ConRS(self.Guest.limite)}\n')
-
-        arq.write('Tranzações:\n')
         for v in self.Guest.hstor['Tranzações']:
-            arq.write(f'\t{v}\n')
+            dados['Tranzações'].append(v)
+
+        with open('Conta_Banco.json', 'w', encoding='utf8') as arq:
+            json.dump(dados, arq, indent=4, ensure_ascii=False, separators=(',', ':'))
+
