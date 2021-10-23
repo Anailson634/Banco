@@ -17,7 +17,7 @@ while True:
     root.SolicitarDB()
 
     Cabecario('Banco SSH')
-    Menu('Depositar', 'Sacar', 'Ver dados', 'Transferencia', 'Finalizar e Salvar')
+    Menu('Depositar', 'Sacar', 'Transferencia', 'Finalizar e Salvar')
 
     User=int(input(">> "))
 

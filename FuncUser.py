@@ -58,7 +58,7 @@ class Conta():
         while True:
             try:
                 Saque = float(input('Saque: '))
-                if Saque > self.limite and Saque < 0:
+                if Saque > self.limite or Saque < 0:
                     print('\033[31mLimite exedido\033[m')
                     sleep(2)
                 else:

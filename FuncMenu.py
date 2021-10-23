@@ -10,9 +10,9 @@ class Ui_Menu:
         Cabecario('Nova conta')
         while True:
             try:
-                Numero = str(input('Número: '))
-                Saldo = float(input('Saldo: '))
-                Limite = float(input('Limite: '))
+                Numero =str(input('Número: '))
+                Saldo =float(input('Saldo: '))
+                Limite =float(input('Limite: '))
                 if self.cliente.Nome:
                     self.Guest = Conta(Numero, self.cliente, Saldo, Limite)
             except ValueError:
@@ -20,6 +20,22 @@ class Ui_Menu:
                 sleep(2.5) 
             finally:
                 break
+
+    def NovoClient(self): # Menu Criando self.cliente
+        Cabecario('Novo cliente')
+        nome =NomeVerify('Nome: ', tot=6)
+        sobre =NomeVerify('Sobrenome: ', tot=5)
+        while True:
+            try:
+                CPF =int(input('CPF (Sem pontuação): '))
+            except ValueError:
+                print('Ocorreu um erro')
+            else:
+                if len(str(CPF)) == 11:
+                    self.cliente = Client(Nome=nome, Sobrenome=sobre, cpf=CPF)
+                    break
+                else:
+                    print('Por favor. seu CPF tem que ter 11 caracteres')
 
     def DepositarM(self): # Menu Deposito
         Cabecario('Depositar uma quantia')
@@ -40,29 +56,14 @@ class Ui_Menu:
     def SolicitarDB(self): # Menu Solicitação de dados
         Cabecario('Minhas informações')
         try:
-            print(f'Número: {self.Guest.numero}')
-            print(f'Nome: {self.cliente.Nome} {self.cliente.Sobrenome}')
-            print(f'CPF: {self.cliente.cpf}')
-            print(f'Saldo: {ConRS(self.Guest.saldo)}')
-            print(f'Limite: {ConRS(self.Guest.limite)}')
+            print(f'Número:   {self.Guest.numero}')
+            print(f'Nome:     {self.cliente.Nome} {self.cliente.Sobrenome}')
+            print(f'CPF:      {self.cliente.cpf}')
+            print(f'Saldo:    {ConRS(self.Guest.saldo)}')
+            print(f'Limite:   {ConRS(self.Guest.limite)}')
         except ValueError:
             print('\033[31mPelo visto sua conta ainda não foi criada!\033[35m')
 
-    def NovoClient(self): # Menu Criando self.cliente
-        Cabecario('Novo self.cliente')
-        nome = NomeVerify('Nome: ', tot=6)
-        sobre = NomeVerify('Sobrenome: ', tot=5)
-        while True:
-            try:
-                CPF = int(input('CPF (Sem pontuação): '))
-            except ValueError:
-                print('Ocorreu um erro')
-            else:
-                if len(str(CPF)) == 11:
-                    self.cliente = Client(Nome=nome, Sobrenome=sobre, cpf=CPF)
-                    break
-                else:
-                    print('Por favor. seu CPF tem que ter 11 caracteres')
 
     def Transfery(self): # Transferir Dinhero par FULANO
         IdFu = str(input('ID do Usuario: '))
