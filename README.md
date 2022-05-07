@@ -2,7 +2,7 @@
 Script onde estara simulando uma conta do banco online
 
 ## Dependências
-###Bibliotecas
+### Bibliotecas
 1. colorama
 
 ## Como usar:
