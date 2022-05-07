@@ -1,6 +1,10 @@
 # Banco
 Script onde estara simulando uma conta do banco online
 
+## Dependências
+###Bibliotecas
+1. colorama
+
 ## Como usar:
 1. passo- Crie um cliente
 	 Nome, Sobrenome e CPF
